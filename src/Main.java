@@ -8,10 +8,14 @@ public class Main
 
         for(int i = 0; i < c1.length; i++)
         {
-            if(c1[i] == c1[i + 1] && c2[i] != c2[i + 1])
+            if(i != c1.length - 1)
             {
-                return false;
+                if(c1[i] == c1[i + 1] && c2[i] != c2[i + 1])
+                {
+                    return false;
+                }
             }
+
         }
         return true;
     }
