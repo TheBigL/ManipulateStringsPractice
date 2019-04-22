@@ -1,5 +1,6 @@
 public class Main
 {
+    //The canTransform method will determine if it is possible
     public static boolean canTransform(String s1, String s2)
     {
         char[] c1 = s1.toCharArray();
@@ -20,9 +21,17 @@ public class Main
         return true;
     }
 
+
+
+
     public static void main(String[] args)
     {
-        canTransform("leban", "yusif");
+       boolean  isTransformable = canTransform("leban", "yusif");
+
+       if(isTransformable)
+           System.out.println("You can Transform this String!");
+       else
+           System.out.println("Sorry, there's no way to transform this string.");
     }
 
 }
