@@ -21,17 +21,31 @@ public class Main
         return true;
     }
 
+    public static String urlify(String string)
+    {
+        string.equals(string.trim());
+
+        string.equals(string.replace("//s", "%20"));
+
+        return string;
+    }
+
 
 
 
     public static void main(String[] args)
     {
-       boolean  isTransformable = canTransform("leban", "yusif");
+        String s1 = "leban";
+        String s2 = "james";
+       boolean  isTransformable = canTransform(s1, s2);
 
        if(isTransformable)
            System.out.println("You can Transform this String!");
        else
            System.out.println("Sorry, there's no way to transform this string.");
+       String query = "Hirokazu Tanaka";
+       String queryString = urlify(query);
+       System.out.println(queryString);
     }
 
 }
