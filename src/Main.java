@@ -21,13 +21,90 @@ public class Main
         return true;
     }
 
-    public static String urlify(String string)
+    public static void urlify(char[] string, int length)
     {
-        string.equals(string.trim());
+        int spaceCount = 0, index = 0, i = 0;
 
-        string.equals(string.replace("//s", "%20"));
+        for(i = 0; i < length - 1; i++)
+        {
+            if(string[i] == ' ')
+                spaceCount++;
+        }
 
-        return string;
+        index = length + spaceCount * 2;
+        if(length < string.length)
+        {
+            string[index] = '\0';
+        }
+
+
+
+        for(i = length - 1; i >= 0; i--)
+        {
+            if(string[i] == ' ')
+            {
+                string[index - 1] = '0';
+                string[index - 2] = '2';
+                string[index - 3] = '%';
+                index -= 3;
+            }
+
+            else
+            {
+                string[index - 1] = string[i];
+                index -= 1;
+            }
+        }
+
+        System.out.println(string.toString());
+    }
+
+
+    public static int findLastCharacter(char[] string)
+    {
+        for(int i = string.length - 1; i >= 0; i--)
+        {
+            if(string[i] == ' ')
+            {
+                return i;
+            }
+        }
+
+        return -1;
+
+    }
+
+    public static boolean oneAwayEditInsert(String s1, String s2)
+    {
+        int index1 = 0;
+        int index2 = 0;
+
+        while(index1 < s1.length() && index2 < s2.length())
+        {
+            if(s1.charAt(index1) != s2.charAt(index2))
+            {
+                if(index1 != index2)
+                    return false;
+                else
+                {
+                    index2++;
+                }
+            }
+
+            else
+            {
+                index1++;
+                index2++;
+            }
+        }
+
+        return true;
+
+    }
+
+    public static boolean oneEditAwayReplace(String s1, String s2)
+    {
+        return true;
     }
 
 
@@ -44,8 +121,9 @@ public class Main
        else
            System.out.println("Sorry, there's no way to transform this string.");
        String query = "Hirokazu Tanaka";
-       String queryString = urlify(query);
-       System.out.println(queryString);
+       char[] cQuery = query.toCharArray();
+       int realLastChar = findLastCharacter(cQuery) + 1;
+       urlify(cQuery, realLastChar);
     }
 
 }
