@@ -74,7 +74,7 @@ public class Main
 
     }
 
-    public static boolean oneAwayEditInsert(String s1, String s2)
+    public static boolean oneEditAwayInsert(String s1, String s2)
     {
         int index1 = 0;
         int index2 = 0;
@@ -121,6 +121,18 @@ public class Main
         }
 
         return true;
+    }
+
+    public static boolean oneEditAway(String s1, String s2)
+    {
+        if(s1.length() == s2.length())
+            return oneEditAwayReplace(s1, s2);
+        else if(s1.length() + 1 == s2.length())
+            return oneEditAwayInsert(s1, s2);
+        else if(s1.length() -1 == s2.length())
+            return oneEditAwayInsert(s2, s1);
+
+        return false;
     }
 
 
